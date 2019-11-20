@@ -1,5 +1,5 @@
 # Tigelt.GitHub.io
 
-<a href="github.com/Tigelt/Programming">Программирование</a>
+<a href="https://github.com/Tigelt/Programming.git">Программирование</a>
 
 Веб-проектирование и веб-языки
