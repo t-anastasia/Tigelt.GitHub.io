@@ -1,0 +1,66 @@
+.polka{
+  order: 3px dashed green;
+  height: 120px;
+  width: 97%;
+  display: table;
+  border: 1px solid purple;
+}
+
+.back_corz{
+  background-color: #666666;
+  height: 220px;
+  width: 60%;
+  display: table;
+  border-radius: 6px;
+}
+
+.corzina{
+  border: 5px;
+  height: 213px;
+  width: 98%;
+  background: #E8E8E8;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.menu{
+  display: table;
+  border: 5px;
+  height: 40px;
+  width: 98%;
+  background: #333333;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.button{
+  margin: 1%;
+  border-radius: 8px;
+  zoom: 120%;
+}
+
+.info{
+display: inline-block;
+margin: 1%;
+}
+
+p{
+color: rgb(255, 255, 255);
+}
+
+.tovar{
+  float: left;
+  margin: 2%;
+  background-color: #CCFFFF;
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px rgba(122,122,122,0.5);;
+  width: 150px;
+  height: 180px;
+  border: 1px solid purple;
+}
