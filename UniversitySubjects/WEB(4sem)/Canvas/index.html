@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <input type="button" value="Поворачиваем" id="but1">
+    <input type="text" value="0" id="ug">
+ 
+    <script>
+      //Рисую буквы
+      building = (ctx) => {
+        ctx.clearRect(0, 0, ggg.width, ggg.height);
+
+        ctx.setTransform(
+          Math.cos(-1*ug.value*Math.PI/180),
+          Math.sin(-1*ug.value*Math.PI/180),
+          -1 * Math.sin(-1*ug.value*Math.PI/180),
+          Math.cos(-1*ug.value*Math.PI/180),
+          200, 200
+        );
+
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'blue';
+        //И
+        ctx.moveTo(25,25);
+        ctx.lineTo(25,125);
+        ctx.lineTo(75,25);
+        ctx.lineTo(75,25);
+        ctx.lineTo(75,125);
+        //В
+        ctx.moveTo(105,125);
+        ctx.lineTo(155,125);
+        ctx.lineTo(155,100);
+        ctx.lineTo(105,75);
+        ctx.lineTo(155,75);
+        ctx.lineTo(155,50);
+        ctx.lineTo(105,25);
+        ctx.lineTo(105,125);
+        ctx.stroke();
+        ctx.closePath();
+        //Кривая
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.moveTo(25,135);
+        ctx.quadraticCurveTo(90, 160, 155, 135);
+        ctx.stroke();
+        ctx.closePath();
+      }
+
+ 		  const ggg = document.createElement('canvas'),
+	          ctx = ggg.getContext('2d'),
+            but = document.getElementById('but1'),
+            ugl = document.getElementById('ug');
+
+      ggg.setAttribute('width', 400);
+	    ggg.setAttribute('height', 400);
+      ggg.setAttribute('id', 'hhh');
+      document.body.appendChild(ggg);
+
+      building(ctx);
+
+      but.addEventListener( 'click', () => building(ctx) );
+    </script>
+
+  </body>
+</html>
