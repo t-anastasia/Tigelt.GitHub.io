@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <script>
+      //Рисую буквы
+      building = (ctx) => {
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'blue';
+        //И
+        ctx.moveTo(25,25);
+        ctx.lineTo(25,125);
+        ctx.lineTo(75,25);
+        ctx.lineTo(75,25);
+        ctx.lineTo(75,125);
+        //В
+        ctx.moveTo(105,125);
+        ctx.lineTo(155,125);
+        ctx.lineTo(155,100);
+        ctx.lineTo(105,75);
+        ctx.lineTo(155,75);
+        ctx.lineTo(155,50);
+        ctx.lineTo(105,25);
+        ctx.lineTo(105,125);
+        ctx.stroke();
+        ctx.closePath();
+        //Кривая
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.moveTo(25,135);
+        ctx.quadraticCurveTo(90, 160, 155, 135);
+        ctx.stroke();
+        ctx.closePath();
+        pattern = ctx.createPattern(ggg, 'repeat');
+      }
+
+ 		  const ggg = document.createElement('canvas'),
+	          ctx = ggg.getContext('2d');
+      let pattern;
+
+      ggg.setAttribute('width', 180);
+	    ggg.setAttribute('height', 180);
+      ggg.setAttribute('id', 'hhh');
+      building(ctx);
+
+      const canvas2 = document.createElement('canvas'),
+            ctx2 = canvas2.getContext('2d');
+      canvas2.setAttribute('width', '2000');
+      canvas2.setAttribute('height','1000');
+      document.body.appendChild(canvas2);
+      ctx2.fillStyle = pattern;
+      ctx2.fillRect(0,0, canvas2.width, canvas2.height);
+    </script>
+
+  </body>
+</html>
