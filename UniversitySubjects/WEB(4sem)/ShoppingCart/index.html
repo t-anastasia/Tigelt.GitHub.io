@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <div class="polka">
+    <div id="1" class="tovar" name="hdd" value="">
+      <h1 style="text-align: center">hdd</h1>
+    </div>
+    <div id="2" class="tovar" name="sdd" value="">
+      <h1 style="text-align: center">sdd</h1>
+    </div>
+    <div id="3" class="tovar" name="usbdrive" value="">
+      <h1 style="text-align: center">usbdrive</h1>
+    </div>
+  </div>
+
+
+  <div class="back_corz">
+    <div class = "corzina"></div>
+    <div class="menu">
+      <input id="button" type="button" class="button" value="Clean cart">
+      <p class="info">Сумма:</p>
+      <p id="sum" class="info">0</p>
+      <p class="info">Бюджет:</p>
+      <p id="budget" class="info">500</p>
+    </div>
+  </div>
+
+
+  <script>
+
+    const ist = document.getElementsByClassName('tovar'),
+          pri = document.getElementsByClassName('corzina')[0],
+          sch = document.getElementById('sum'),
+          lim = document.getElementById('budget'),
+          del = document.getElementById('button')
+          URL = 'https://kodaktor.ru/cart_data.json';
+    let sum = 0,
+        bud = 500;
+
+    for(let el of ist){
+      let name = el.getAttribute('name')
+      fetch(URL)
+      .then(response => response.json())
+      .then(data => {
+        for(let item in data){
+          if(item == name){
+            el.innerHTML += '<h3 style="text-align: center">'+data[item]+'</h3>'
+          }
+        }
+      })
+      el.setAttribute('draggable', true);
+      el.addEventListener('dragstart', (e) => e.dataTransfer.setData('text/plain', e.target.id));
+      el.addEventListener('drag', () => pri.style.backgroundColor = '#F7FE72');
+      el.addEventListener('dragend', () => pri.style.backgroundColor = '#E8E8E8');
+    };
+
+    pri.addEventListener('dragover', (e) => e.preventDefault());
+    pri.addEventListener('drop', (e) => {
+      let el = document.getElementById(e.dataTransfer.getData('text/plain')).cloneNode(true);
+      let z = el.querySelector('h3');
+      if (bud-z.textContent < 0) {
+        alert('No money!');
+      } else {
+        let pr = e.target.appendChild(el);
+        sum += +z.textContent;
+        bud -= +z.textContent;
+        sch.innerHTML = sum;
+        lim.innerHTML = bud;
+      };
+    });
+
+    del.addEventListener('click', () => {
+      while (pri.firstChild) {
+        pri.removeChild(pri.firstChild);
+      };
+      sum = 0;
+      bud = 500;
+      sch.innerHTML = sum;
+      lim.innerHTML = bud;
+    });
+
+/*
+let pr = e.target.appendChild(document.getElementById(e.dataTransfer.getData('text/plain')).cloneNode(true));
+z = pr.querySelector('h3');
+sum += +z.textContent;
+bud -= +z.textContent;
+sch.innerHTML = sum;
+lim.innerHTML = bud;
+*/
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+k
