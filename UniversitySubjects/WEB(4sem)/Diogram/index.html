@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <input type="button" value="туц">
+    <script>
+      const canvas = document.createElement('canvas'),
+            ctx = canvas.getContext('2d'),
+            URL = 'https://kodaktor.ru/j/rates';
+      let w = 700, h = 220;
+      canvas.setAttribute('width', w);
+      canvas.setAttribute('height', h);
+      document.body.appendChild(canvas);
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'blue';
+      ctx.textAlign = 'center';
+      ctx.position = 'absolute';
+      ctx.strokeRect(1, 2, w - 2, h - 2);
+      ctx.fillStyle = 'red';
+      document.querySelector('input').addEventListener('click', async({target}) =>{
+        let rates = await fetch(URL).then(x => x.json());
+        const names = rates.map(({ name }) => name);
+        rates = rates.map(({sell}) => Number(sell));
+        rates = rates.map(x => x * h / Math.max(...rates));
+        const wRect = Math.floor(w/(2*rates.length));
+        rates.forEach((x, i) =>{
+          ctx.rect(2 * wRect * i, h, wRect, -x);
+          ctx.fill();
+          ctx.beginPath()
+          ctx.strokeText(names[i], 2 * wRect * i + wRect/2, h - 8);
+        });
+      }, { once: true });
+    </script>
+  </body>
+</html>
