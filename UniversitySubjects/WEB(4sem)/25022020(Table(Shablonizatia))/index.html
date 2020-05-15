@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jade/1.11.0/jade.min.js"></script>
+   <style> table {border: 2px, color: black} </style>
+ </head>
+ <body>
+<textarea   id="src" cols="30" rows="10">
+head
+body
+  table(style="border-collapse: collapse")
+    thead
+      each title in ['Валюта', 'Продажа', 'Покупка']
+        th(style="border: 1px solid black")= title
+    tbody
+      each value in data
+        tr
+          each item in value
+            td(style="border: 1px solid black")= item
+</textarea>
+
+   <pre class="task" id="pg2"></pre>
+
+  <input type="button" id="jjj" value="неужели">
+
+  <script src="scripts/scrip.js"></script>
+ </body>
+</html>
 
