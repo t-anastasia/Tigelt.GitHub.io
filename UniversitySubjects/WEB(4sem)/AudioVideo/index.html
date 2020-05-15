@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <audio>
+      <source src="https://www.synthmania.com/Boss%20DR-220A/Audio/Boss%20DR-220A%20WAV%20samples/Bass%20Drum.wav" type="audio/mpeg">
+    </audio><button onclick="this.previousSibling.play()">Drum</button>
+    <ol>
+      <li>Первый</li>
+      <li>Второй</li>
+      <li>Третий</li>
+    </ol>
+    <input type="button" value="translate">
+    <script>
+      const lis = document.querySelectorAll('li');
+      const but = document.querySelector('input');
+      const translate = ru =>
+        (ru === 'Первый') ? 'First' : (ru === 'Второй') ? 'Second' : (ru === 'Третий') ? 'Third' : 'Unknown';
+
+
+      but.addEventListener('click', ()=>{
+        lis.forEach( item => {
+          item.textContent = translate(item.textContent);
+        });
+      });
+
+    </script>
+  </body>
+</html>
